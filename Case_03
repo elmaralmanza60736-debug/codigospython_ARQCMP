@@ -1,0 +1,25 @@
+#llamar librerias:
+import RPi.GPIO as GPIO
+
+#declarar constantes:
+PIN_BOTON = 3
+PIN_LED = 7
+
+#declarar variables:
+estadoBoton = False
+
+#zona de configuracion:
+GPIO.setmode(GPIO.BOARD)
+GPIO.setwarnings(False) # desactivar mensajes de advertencias
+GPIO.setup(PIN_BOTON, GPIO.IN)
+GPIO.setup(PIN_LED, GPIO.OUT)
+
+#zona del programa principal:
+WHILE True:
+	estadoBoton = GPIO.input(PIN_BOTON)
+
+	if estadoBoton == True:
+		GPIO.output(PIN_LED, True)
+	print("PRESIONADO")
+	else:
+	GPIO.output(PIN_LED, False)
